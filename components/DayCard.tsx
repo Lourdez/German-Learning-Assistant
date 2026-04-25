@@ -130,9 +130,23 @@ export default function DayCard({
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     {block.description}
                   </p>
-                  <span className="inline-block text-xs text-indigo-600 dark:text-indigo-400 mt-1">
-                    {block.resource}
-                  </span>
+                  {/* Resource links */}
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                    {block.links.map((link, i) => (
+                      <a
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 hover:underline transition-colors"
+                      >
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
